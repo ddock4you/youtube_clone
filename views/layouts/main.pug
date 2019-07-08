@@ -1,12 +1,10 @@
 doctype html
 html
     head
-        title Youtube Clone
+        title #{pageTitle} | #{siteName}
+        <script src="https://kit.fontawesome.com/3144c2095e.js"></script>
     body
-        header
-            h1 Youtube Clone
+        include ../partials/header
         main
             block content
-        footer
-            span &copy; Youtube clone
-        
+        include ../partials/footer
