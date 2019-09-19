@@ -12,21 +12,16 @@ const handleListening = () => {
     console.log(`Listening http://localhost:${PORT}`);
 }
 
-const handleHome = (req, res) => {
-    console.log(req);
-    res.send('Home');
+const handleHome = (req, res) => res.send('Home');
+const handleAbout = (req, res) => res.send('About-us');
+const handleContact = (req, res) => res.send('Contact');
+
+const middleware = (req, res, next) => {
+    console.log("I'm middleware");
+    next();
 }
 
-const handleProfile = (req, res) => {
-    res.send('Profile');
-}
-
-// const betweenHome = (req, res, next) => {
-//     console.log('between');
-//     next();
-// }
-
-// app.use(betweenHome);
+const protect = (req, res) => res.redirect('/');
 
 app.use(cookieParser());
 app.use(bodyParser.json());
@@ -34,7 +29,11 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(helmet());
 app.use(morgan('dev'));
 
+app.use(middleware);
+
 app.get('/', handleHome);
-app.get('/profile', handleProfile);
+app.get('/about-us', handleAbout);
+app.get('/contact', handleContact);
+app.get('/protected', protect);
 
 app.listen(PORT, handleListening);
