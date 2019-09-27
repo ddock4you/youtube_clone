@@ -6,7 +6,7 @@ export const search = (req, res) => {
         query: { term: searchingBy }
     } = req
     // console.log(searchingBy);
-    res.render('search', {pageTitle: 'search', searchingBy});
+    res.render('search', {pageTitle: 'search', searchingBy, videos});
 }
 
 // export const videos = (req, res) => res.render('videos', {pageTitle: 'videos'});
