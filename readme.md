@@ -15,4 +15,4 @@ hi
 
 [link]: http://github.com
 
-fff*string text*ff
+*string text*
