@@ -2,6 +2,7 @@ import app from './app';
 import "./db";
 import dotenv from "dotenv";
 import "./models/Video.js";
+import "./models/Comment.js";
 dotenv.config();
 
 
