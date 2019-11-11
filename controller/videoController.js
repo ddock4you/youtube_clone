@@ -41,9 +41,7 @@ export const postUpload = async(req, res) => {
         res.redirect(routes.videoDetail(newVideo.id));
     } catch(error) {
         console.log(error);
-        // res.redirect(routes.videoDetail(newVideo.id));
     }
-    // console.log(newVideo);
 }
 
 export const videoDetail = (req, res) => res.render('videoDetail', {pageTitle: videoDetail});
