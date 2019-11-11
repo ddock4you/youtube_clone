@@ -50,7 +50,7 @@ export const videoDetail = async (req, res) => {
     } = req;
     const video = await Video.findById(id);
 
-    res.render('videoDetail', {pageTitle: videoDetail, video});
+    res.render('videoDetail', {pageTitle: 'videoDetail', video});
 }
     
 export const editVideo = (req, res) => res.render('editVideo', {pageTitle: 'editVideo'});
