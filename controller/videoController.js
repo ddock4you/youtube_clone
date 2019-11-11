@@ -1,5 +1,5 @@
 import routes from '../routes';
-import '../models/Video';
+import Video from '../models/Video';
 
 export const home = async(req, res) => {
     try {
@@ -26,11 +26,24 @@ export const getUpload = (req, res) => {
     res.render('upload', {pageTitle: 'upload'});
 }
 
-export const postUpload = (req, res) => {
+export const postUpload = async(req, res) => {
     const {
-        body: {file, title, description}
+        body: {title, description},
+        file: {path}
     } = req;
-    res.redirect(routes.videoDetail(34534));
+    // console.log(body);
+    try {
+        const newVideo = await Video.create({
+            fileUrl: path,
+            title,
+            description
+        });
+        res.redirect(routes.videoDetail(newVideo.id));
+    } catch(error) {
+        console.log(error);
+        // res.redirect(routes.videoDetail(newVideo.id));
+    }
+    // console.log(newVideo);
 }
 
 export const videoDetail = (req, res) => res.render('videoDetail', {pageTitle: videoDetail});
