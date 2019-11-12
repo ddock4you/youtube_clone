@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev:server": "nodemon --exec babel-node init",
-    "dev:assets": "cross-env WEBPACK_ENV=development webpack",
+    "dev:assets": "cross-env WEBPACK_ENV=development webpack -w",
     "build:assets": "cross-env WEBPACK_ENV=production webpack"
   },
   "repository": {
@@ -22,8 +22,10 @@
   "dependencies": {
     "@babel/core": "^7.7.2",
     "@babel/node": "^7.7.0",
+    "@babel/polyfill": "^7.7.0",
     "@babel/preset-env": "^7.7.1",
     "autoprefixer": "^9.7.1",
+    "babel-loader": "^8.0.6",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.4",
     "cross-env": "^6.0.3",
