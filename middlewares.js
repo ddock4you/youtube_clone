@@ -8,9 +8,10 @@ export const middlewares = (req, res, next) => {
     res.locals.routes = routes;
     res.locals.user = {
         id: 1,
-        isAuthenticated: true
+        isAuthenticated: false
     }
     next();
 }
 
 export const uploadVideo = multerVideo.single('videoFile');
+
