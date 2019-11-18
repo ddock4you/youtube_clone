@@ -42,12 +42,38 @@ export const postLogin = passport.authenticate('local', {
 
 export const githubLogin = passport.authenticate('github');
 
-export const githubLoginCallback = (accessToken, refreshToken, profile, cb) => {
-    console.log(accessToken, refreshToken, profile, cb);
-}
+// callback 할 때 회원가입 또는 로그인 하려는 깃허브 아이디의 이메일을 공개여부가
+// private로 되어 있거나 이메일이 입력되어 있지 않을 경우 passport에서
+// failed to serialize user into session 에러 뜨면서 안됨.
+
+// 회원가입에서 email을 가입에 필요한 기본정보로 설정했는데 깃허브에서 이메일을 받아올 수 없기 때문에
+// 생긴 에러
+export const githubLoginCallback = async (_, __, profile, cb) => {
+    // console.log(accessToken, refreshToken, profile, cb);
+    const {
+        _json: {id, avatar_url, name, email}
+    } = profile;
+    try {
+        const user = await User.findOne({ email });
+        if (user) {
+            user.githubId = id,
+            user.save();
+            return cb(null, user);
+        }
+        const newUser = await User.create({
+            email,
+            name,
+            githubId: id,
+            avatarUrl: avatar_url 
+        });
+        return cb(null, newUser);
+    } catch (error) {
+        return cb(error);
+    }
+};
 
 export const postGithubLogin = (req, res) => {
-    res.send(routes.home);
+    res.redirect(routes.home);
 }
 
 export const logout = (req, res) => {
