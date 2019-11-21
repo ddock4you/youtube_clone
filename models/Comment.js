@@ -9,6 +9,10 @@ const CommentSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
+    creator: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+    }
     // Video id 값을 가져와 해당하는 video의 코멘트를 표시해주고 싶을 경우 아래의 오브젝트를 이용
     // video: {
     //     type: mongoose.Schema.Types.ObjectId,
