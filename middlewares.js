@@ -3,6 +3,7 @@ import multer from 'multer';
 import { existentialTypeParam } from 'babel-types';
 
 const multerVideo = multer({dest: 'uploads/videos'});
+const multarAvatar = multer({dest: 'uploads/avatar'});
 
 export const middlewares = (req, res, next) => {
     res.locals.siteName = 'Wetube';
@@ -28,4 +29,4 @@ export const onlyPrivate = (req, res, next) => {
 }
 
 export const uploadVideo = multerVideo.single('videoFile');
-
+export const uploadAvatar = multarAvatar.single('avatar');

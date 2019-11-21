@@ -89,5 +89,26 @@ export const logout = (req, res) => {
 }
 export const users = (req, res) => res.render('users', {pageTitle: 'users'});
 export const userDetail = (req, res) => res.render('userDetail', {pageTitle: 'userDetail'});
-export const editProfile = (req, res) => res.render('editProfile', {pageTitle: 'editProfile'});
+
+export const getEditProfile = (req, res) => {
+    
+    res.render('editProfile', {pageTitle: 'editProfile'});
+};
+
+export const postEditFile = async (req, res) => {
+    const {
+        body: { name, email },
+        file
+    } = req;
+    try {
+        await User.findByIdAndUpdate(req.user.id, {
+            name, email,
+            avatarUrl: file ? file.path : req.user.avatarUrl
+        });
+        res.redirect(routes.me);
+    } catch (error) {
+        res.render("editProfile", { pageTitle: "Edit Profile" });
+    }
+};
+
 export const changePassword = (req, res) => res.render('changePassword', {pageTitle: 'changePassword'});
