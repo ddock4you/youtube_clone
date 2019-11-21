@@ -3,9 +3,10 @@ import routes from '../routes';
 import {
   users,
   userDetail,
-  changePassword,
   getEditProfile,
-  postEditFile
+  postEditFile,
+  getChangePassword,
+  postChangePassword
 } from '../controller/userController';
 import { onlyPrivate, uploadAvatar } from '../middlewares';
 
@@ -14,7 +15,8 @@ const userRouter = express.Router();
 userRouter.get(routes.home, users);
 userRouter.get(routes.editProfile, onlyPrivate, getEditProfile);
 userRouter.post(routes.editProfile, onlyPrivate, uploadAvatar, postEditFile);
+userRouter.get(routes.changePassword, onlyPrivate, getChangePassword);
+userRouter.post(routes.changePassword, onlyPrivate, postChangePassword);
 userRouter.get(routes.userDetail(), userDetail);
-userRouter.get(routes.changePassword, onlyPrivate, changePassword);
 
 export default userRouter;
