@@ -10,6 +10,7 @@ import MongoStroe from 'connect-mongo';
 import userRouter from './routers/userRouter';
 import videoRouter from './routers/videoRouter';
 import globalRouter from './routers/globalRouter';
+import apiRouter from './routers/apiRouter';
 import routes from './routes';
 import { middlewares } from './middlewares';
 
@@ -43,5 +44,6 @@ app.use(middlewares);
 app.use(routes.home, globalRouter);
 app.use(routes.videos, videoRouter);
 app.use(routes.users, userRouter);
+app.use(routes.api, apiRouter);
 
 export default app;
