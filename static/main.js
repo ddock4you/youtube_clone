@@ -86,6 +86,18 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./assets/js/addComment.js":
+/*!*********************************!*\
+  !*** ./assets/js/addComment.js ***!
+  \*********************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);\n\nvar addCommentForm = document.getElementById(\"jsAddComment\");\n\nvar sendComment = function sendComment(comment) {\n  var videoId, response;\n  return regeneratorRuntime.async(function sendComment$(_context) {\n    while (1) {\n      switch (_context.prev = _context.next) {\n        case 0:\n          videoId = window.location.href.split(\"/videos/\")[1];\n          console.log(videoId);\n          _context.next = 4;\n          return regeneratorRuntime.awrap(axios__WEBPACK_IMPORTED_MODULE_0___default()({\n            url: \"/api/\".concat(videoId, \"/comment\"),\n            method: \"POST\",\n            data: {\n              comment: comment\n            }\n          }));\n\n        case 4:\n          response = _context.sent;\n          console.log(response);\n\n        case 6:\n        case \"end\":\n          return _context.stop();\n      }\n    }\n  });\n};\n\nvar handleSubmit = function handleSubmit(event) {\n  event.preventDefault();\n  var commentInput = addCommentForm.querySelector(\"input\");\n  var comment = commentInput.value;\n  sendComment(comment);\n  commentInput.value = \"\";\n};\n\nfunction init() {\n  addCommentForm.addEventListener(\"submit\", handleSubmit);\n}\n\nif (addCommentForm) {\n  init();\n}\n\n//# sourceURL=webpack:///./assets/js/addComment.js?");
+
+/***/ }),
+
 /***/ "./assets/js/main.js":
 /*!***************************!*\
   !*** ./assets/js/main.js ***!
@@ -94,7 +106,7 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scss_styles_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../scss/styles.scss */ \"./assets/scss/styles.scss\");\n/* harmony import */ var _scss_styles_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_scss_styles_scss__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _videoPlayer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./videoPlayer */ \"./assets/js/videoPlayer.js\");\n/* harmony import */ var _videoRecorder__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./videoRecorder */ \"./assets/js/videoRecorder.js\");\n/* harmony import */ var _videoRecorder__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_videoRecorder__WEBPACK_IMPORTED_MODULE_2__);\n\n\n\n\n//# sourceURL=webpack:///./assets/js/main.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scss_styles_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../scss/styles.scss */ \"./assets/scss/styles.scss\");\n/* harmony import */ var _scss_styles_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_scss_styles_scss__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _videoPlayer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./videoPlayer */ \"./assets/js/videoPlayer.js\");\n/* harmony import */ var _videoRecorder__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./videoRecorder */ \"./assets/js/videoRecorder.js\");\n/* harmony import */ var _videoRecorder__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_videoRecorder__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _addComment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./addComment */ \"./assets/js/addComment.js\");\n\n\n\n\n\n//# sourceURL=webpack:///./assets/js/main.js?");
 
 /***/ }),
 
