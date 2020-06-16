@@ -1,15 +1,13 @@
-const home = (req, res) => res.send("Home");
-const search = (req, res) => res.send("Search");
-const videos = (req, res) => res.send("Videos");
-const upload = (req, res) => res.send("Upload");
-const videoDetail = (req, res) => res.send("Video Detail");
-const editVideo = (req, res) => res.send("Edit Video");
-const deleteVideo = (req, res) => res.send("Delete Video");
+const home = (req, res) => res.render("home");
+const search = (req, res) => res.render("search");
+const upload = (req, res) => res.render("upload");
+const videoDetail = (req, res) => res.render("videoDetail");
+const editVideo = (req, res) => res.render("editVideo");
+const deleteVideo = (req, res) => res.render("deleteVideo");
 
 module.exports = {
     home,
     search,
-    videos,
     upload,
     videoDetail,
     editVideo,

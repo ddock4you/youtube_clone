@@ -9,7 +9,6 @@ const {
 
 const userRouter = express.Router();
 
-userRouter.get(routes.home, users);
 userRouter.get(routes.userDetail, userDetail);
 userRouter.get(routes.editProfile, editProfile);
 userRouter.get(routes.changePassword, changePassword);

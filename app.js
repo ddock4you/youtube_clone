@@ -9,6 +9,7 @@ const routes = require("./routers");
 
 const app = express();
 
+app.set("view engine", "pug");
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
