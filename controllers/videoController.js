@@ -1,4 +1,6 @@
-const home = (req, res) => res.render("home", { pageTitle: "Home" });
+const videos = require("../db");
+
+const home = (req, res) => res.render("home", { pageTitle: "Home", videos });
 
 const search = (req, res) => {
     const {
