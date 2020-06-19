@@ -12,7 +12,11 @@ const postJoin = (req, res) => {
         res.redirect("/");
     }
 };
-const login = (req, res) => res.render("login");
+const getLogin = (req, res) => res.render("login");
+const postLogin = (req, res) => {
+    res.redirect("/");
+};
+
 const logout = (req, res) => res.render("logout");
 const userDetail = (req, res) => res.render("userDetail");
 const editProfile = (req, res) => res.render("editProfile");
@@ -21,7 +25,8 @@ const changePassword = (req, res) => res.render("changePassword");
 module.exports = {
     getJoin,
     postJoin,
-    login,
+    getLogin,
+    postLogin,
     logout,
     userDetail,
     editProfile,

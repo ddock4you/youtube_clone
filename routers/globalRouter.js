@@ -3,7 +3,8 @@ const { home, search } = require("../controllers/videoController");
 const {
     getJoin,
     postJoin,
-    login,
+    getLogin,
+    postLogin,
     logout,
 } = require("../controllers/userController");
 const routes = require(".");
@@ -14,7 +15,8 @@ globalRouter.get(routes.home, home);
 globalRouter.get(routes.search, search);
 globalRouter.get(routes.join, getJoin);
 globalRouter.post(routes.join, postJoin);
-globalRouter.get(routes.login, login);
+globalRouter.get(routes.login, getLogin);
+globalRouter.post(routes.login, postLogin);
 globalRouter.get(routes.logout, logout);
 
 module.exports = globalRouter;
