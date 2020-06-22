@@ -17,7 +17,9 @@ const postLogin = (req, res) => {
     res.redirect("/");
 };
 
-const logout = (req, res) => res.render("logout");
+const logout = (req, res) => {
+    res.redirect("/");
+};
 const userDetail = (req, res) => res.render("userDetail");
 const editProfile = (req, res) => res.render("editProfile");
 const changePassword = (req, res) => res.render("changePassword");

@@ -1,4 +1,4 @@
-const videos = require("../db");
+const routes = require("../routers");
 
 const home = (req, res) => res.render("home", { pageTitle: "Home", videos });
 
@@ -9,7 +9,14 @@ const search = (req, res) => {
     res.render("search", { searchingBy, videos });
 };
 
-const upload = (req, res) => res.render("upload");
+const getUpload = (req, res) => res.render("upload");
+
+const postUpload = (req, res) => {
+    const {
+        body: { file, title, Description },
+    } = req;
+    res.redirect(routes.videoDetail(324393));
+};
 
 const videoDetail = (req, res) => res.render("videoDetail");
 
@@ -20,7 +27,8 @@ const deleteVideo = (req, res) => res.render("deleteVideo");
 module.exports = {
     home,
     search,
-    upload,
+    getUpload,
+    postUpload,
     videoDetail,
     editVideo,
     deleteVideo,
