@@ -1,4 +1,6 @@
 require("./db");
+require("./models/Video");
+require("./models/Comment");
 const app = require("./app");
 const dotenv = require("dotenv");
 
