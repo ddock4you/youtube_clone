@@ -6,7 +6,7 @@ const globalRouter = require("./routers/globalRouter");
 const userRouter = require("./routers/userRouter");
 const videoRouter = require("./routers/videoRouter");
 const routes = require("./routers");
-const localsMiddlewares = require("./middlewares");
+const { localsMiddlewares } = require("./middlewares");
 
 const app = express();
 

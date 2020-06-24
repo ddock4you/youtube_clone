@@ -1,6 +1,16 @@
 const routes = require("../routers");
+const Video = require("../models/Video");
 
-const home = (req, res) => res.render("home", { pageTitle: "Home", videos });
+const home = async (req, res) => {
+    try {
+        const videos = await Video.find({});
+        console.log(videos);
+        res.render("home", { pageTitle: "Home", videos });
+    } catch (error) {
+        console.error(error);
+        res.render("home", { pageTitle: "Home", videos: {} });
+    }
+};
 
 const search = (req, res) => {
     const {
@@ -11,11 +21,17 @@ const search = (req, res) => {
 
 const getUpload = (req, res) => res.render("upload");
 
-const postUpload = (req, res) => {
+const postUpload = async (req, res) => {
     const {
-        body: { file, title, Description },
+        body: { title, description },
+        file: { path },
     } = req;
-    res.redirect(routes.videoDetail(324393));
+    const newVideo = await Video.create({
+        fileUrl: path,
+        title,
+        description,
+    });
+    res.redirect(routes.videoDetail(newVideo.id));
 };
 
 const videoDetail = (req, res) => res.render("videoDetail");
