@@ -1,6 +1,6 @@
 const routes = require("./routers");
 const multer = require("multer");
-const upload = multer({ dest: "videos/" });
+const upload = multer({ dest: "uploads/videos/" });
 const uploadFile = upload.single("videoFile");
 
 const localsMiddlewares = (req, res, next) => {
