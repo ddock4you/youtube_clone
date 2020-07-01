@@ -1,9 +1,10 @@
 const routes = require("../routers");
 const Video = require("../models/Video");
+const { findById } = require("../models/Video");
 
 const home = async (req, res) => {
     try {
-        const videos = await Video.find({});
+        const videos = await Video.find({}).sort({ _id: -1 });
         console.log(videos);
         res.render("home", { pageTitle: "Home", videos });
     } catch (error) {
@@ -34,11 +35,56 @@ const postUpload = async (req, res) => {
     res.redirect(routes.videoDetail(newVideo.id));
 };
 
-const videoDetail = (req, res) => res.render("videoDetail");
+const videoDetail = async (req, res) => {
+    try {
+        const {
+            params: { id },
+        } = req;
+        const video = await Video.findById(id);
+        console.log(video.fileUrl);
+        res.render("videoDetail", { pageTitle: video.title, video });
+    } catch (error) {
+        console.log(error);
+        res.redirect("/");
+    }
+};
 
-const editVideo = (req, res) => res.render("editVideo");
+const getEditVideo = async (req, res) => {
+    try {
+        const {
+            params: { id },
+        } = req;
+        const video = await Video.findById(id);
+        res.render("editVideo", { video });
+    } catch (error) {
+        res.redirect("/");
+    }
+};
 
-const deleteVideo = (req, res) => res.render("deleteVideo");
+const postEditVideo = async (req, res) => {
+    try {
+        const {
+            params: { id },
+        } = req;
+        const {
+            body: { title, description },
+        } = req;
+        await Video.findOneAndUpdate({ _id: id }, { title, description });
+        res.redirect(routes.videoDetail(id));
+    } catch (error) {
+        res.redirect("/");
+    }
+};
+
+const deleteVideo = async (req, res) => {
+    try {
+        const {
+            params: { id },
+        } = req;
+        await Video.findOneAndDelete(id);
+    } catch {}
+    res.redirect("/");
+};
 
 module.exports = {
     home,
@@ -46,6 +92,7 @@ module.exports = {
     getUpload,
     postUpload,
     videoDetail,
-    editVideo,
+    getEditVideo,
+    postEditVideo,
     deleteVideo,
 };
