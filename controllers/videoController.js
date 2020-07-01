@@ -13,11 +13,19 @@ const home = async (req, res) => {
     }
 };
 
-const search = (req, res) => {
+const search = async (req, res) => {
     const {
         query: { term: searchingBy },
     } = req;
-    res.render("search", { searchingBy, videos });
+    let videos = [];
+    try {
+        videos = await Video.find({
+            title: { $regex: searchingBy, $options: "i" },
+        });
+    } catch (error) {
+        console.log(erroe);
+    }
+    res.render("search", { pageTitle: "Search", searchingBy, videos });
 };
 
 const getUpload = (req, res) => res.render("upload");
